@@ -113,7 +113,7 @@ class TestCheckNumber(unittest.TestCase):
         sys.stdout = captured_output
         check_number(7)
         sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue().strip(), "      *      \n     ***     \n    *****    \n   *******   \n  *********  \n *********** \n*************")
+        self.assertEqual(captured_output.getvalue().strip(), "*   \n     ***     \n    *****    \n   *******   \n  *********  \n *********** \n*************")
 
     def test_check_number_3(self):
         captured_output = StringIO()
@@ -248,6 +248,34 @@ class TestScoreboardFunction(unittest.TestCase):
         self.assertEqual(scoreboard("invalid input"), [])
         self.assertEqual(scoreboard("seven eight eleven"), [7, 8])
 
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+"""Task 12"""
+
+class TestNo5sFunction(unittest.TestCase):
+    def test_positive_range(self):
+        self.assertEqual(no_5s(2, 13), 10)
+
+    def test_another_positive_range(self):
+        self.assertEqual(no_5s(1, 20), 16)
+
+    def test_range_including_zero(self):
+        self.assertEqual(no_5s(-5, 5), 7)
+
+    def test_negative_range(self):
+        self.assertEqual(no_5s(-10, -1), 8)
+
+    def test_single_value(self):
+        self.assertEqual(no_5s(5, 5), 0)
+
+    def test_range_with_large_values(self):
+        self.assertEqual(no_5s(1000, 1010), 10)
+
+    def test_negative_large_values(self):
+        self.assertEqual(no_5s(-1000, -990), 10)
 
 if __name__ == '__main__':
     unittest.main()

@@ -247,3 +247,33 @@ def scoreboard(st):
 
 a = scoreboard("four nil")
 print(a)
+
+"""Task 12. Необходимо создать функцию, которая получает два аргумента, a и b,
+и возвращает количество целых чисел между a и b включительно: Не содержит цифры 5.
+Следующие числа содержат цифру 5: 57, 512.
+Не делятся на 5.
+Следующие числа делятся на 5: 100, 420.
+Не содержит ровно 5 цифр."""
+
+
+def no_5s(a, b):
+    count = 0
+
+    for num in range(a, b + 1):
+        if '5' in str(abs(num)):
+            continue
+        if num % 5 == 0:
+            continue
+        if len(str(abs(num))) == 5:
+            continue
+        if abs(num) ** 0.2 % 1 == 0:
+            continue
+
+        count += 1
+
+    return count
+
+
+print(no_5s(2, 13))
+print(no_5s(1, 20))
+print(no_5s(-5, 5))
